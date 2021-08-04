@@ -1,0 +1,9 @@
+.table {
+  width: 75%;
+  margin: 70px auto;
+  border-collapse: collapse;
+}
+
+.th, .td {
+  border: 1px solid black;
+}
