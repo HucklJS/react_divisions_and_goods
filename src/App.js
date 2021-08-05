@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
+
+import {API_GET_PRODUCTS} from "./api/config"
 
 import './App.css'
 import Table from "./components/Table"
@@ -9,7 +11,7 @@ function App() {
   const [divisions, setDivisions] = useState(null)
 
   useEffect(() => {
-    fetch('https://datainlife.ru/junior_task/get_products.php')
+    fetch(API_GET_PRODUCTS)
       .then(res => res.json())
       .then(data => {
         setDivisions(data)
@@ -30,16 +32,14 @@ function App() {
           ? <span>Error</span>
           : <div>
             {
-              divisions
-                ? divisions.map(
-                    division =>
-                      <Table
-                        key={division.rid}
-                        title={division.rname}
-                        goods={division.goods}
-                      />
-                  )
-                : null
+              divisions.map(
+                division =>
+                  <Table
+                    key={division.rid}
+                    title={division.rname}
+                    goods={division.goods}
+                  />
+              )
             }
           </div>
       }
